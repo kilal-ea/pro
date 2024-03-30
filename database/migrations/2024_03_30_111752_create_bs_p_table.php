@@ -13,8 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('b_s_p', function (Blueprint $table) {
-            $table->id();
+        Schema::create('bs_p', function (Blueprint $table) {
+            $table->id();  
+            $table->unsignedBigInteger('idbs');
+            $table->unsignedBigInteger('idp');
+            $table->Integer('quantity_Carton');
+            $table->Integer('quantity_piece');
+            $table->timestamps();
+            
+            $table->foreign('idbs')->references('id')->on('bons_sale');
+            $table->foreign('idp')->references('id')->on('products');
             $table->timestamps();
         });
     }

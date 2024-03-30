@@ -15,7 +15,16 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('code');  
+            $table->unsignedBigInteger('ids'); 
+            $table->unsignedBigInteger('idc');
+            $table->decimal('priceTotam');  
+            $table->boolean('statu'); 
             $table->timestamps();
+            
+            $table->foreign('code')->references('code')->on('bons_sale')->index();
+            $table->foreign('ids')->references('id')->on('users');
+            $table->foreign('idc')->references('id')->on('cliets');
         });
     }
 

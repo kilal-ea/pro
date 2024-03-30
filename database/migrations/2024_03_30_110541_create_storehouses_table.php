@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('storehouses', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('idM'); 
+            $table->foreign('idM')->references('id')->on('users');
+            $table->unsignedBigInteger('idcity'); 
+            $table->foreign('idcity')->references('id')->on('citys');
+            $table->unsignedBigInteger('idstock'); 
+            $table->foreign('idstock')->references('id')->on('stocks'); 
             $table->timestamps();
         });
     }

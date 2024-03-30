@@ -15,8 +15,17 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('code');  
+            $table->unsignedBigInteger('idus'); 
+            $table->unsignedBigInteger('idua'); 
+            $table->boolean('statu'); 
             $table->timestamps();
+            
+            $table->foreign('code')->references('code')->on('sbons_transaction')->index();
+            $table->foreign('idus')->references('id')->on('users');
+            $table->foreign('idua')->references('id')->on('users');
         });
+        
     }
 
     /**

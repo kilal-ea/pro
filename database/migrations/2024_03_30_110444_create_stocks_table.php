@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('idcity'); 
+            $table->foreign('idcity')->references('id')->on('citys'); 
             $table->timestamps();
         });
     }

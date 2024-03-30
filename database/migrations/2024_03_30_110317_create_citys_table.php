@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('city', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedBigInteger('idsec'); 
+            $table->foreign('idsec')->references('id')->on('sector'); 
             $table->timestamps();
         });
     }

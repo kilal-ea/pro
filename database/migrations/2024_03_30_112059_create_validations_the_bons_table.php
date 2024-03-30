@@ -15,8 +15,16 @@ return new class extends Migration
     {
         Schema::create('validation_the_bon', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_ass'); 
+            $table->unsignedBigInteger('codeBonS'); 
+            $table->boolean('status'); 
             $table->timestamps();
+            
+            
+            $table->foreign('id_ass')->references('id')->on('users');
+            $table->foreign('codeBonS')->references('code')->on('bons_sale')->index();
         });
+        
     }
 
     /**

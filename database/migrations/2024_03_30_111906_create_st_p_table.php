@@ -14,7 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('st_p', function (Blueprint $table) {
-            $table->id();
+            $table->id();  
+            $table->unsignedBigInteger('idst');
+            $table->unsignedBigInteger('idp');
+            $table->Integer('quantity_Carton');
+            $table->Integer('quantity_piece');
+            $table->timestamps();
+            
+            $table->foreign('idst')->references('id')->on('bons_sale');
+            $table->foreign('idp')->references('id')->on('products');
             $table->timestamps();
         });
     }
