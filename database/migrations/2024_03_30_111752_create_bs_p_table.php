@@ -23,7 +23,6 @@ return new class extends Migration
             
             $table->foreign('idbs')->references('id')->on('bons_sale');
             $table->foreign('idp')->references('id')->on('products');
-            $table->timestamps();
         });
     }
 
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_b_s__p');
+        Schema::dropIfExists('bs_p');
     }
 };

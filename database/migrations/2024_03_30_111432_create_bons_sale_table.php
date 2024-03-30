@@ -13,20 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bons_transaction', function (Blueprint $table) {
+        Schema::create('bons_sale', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('code');  
             $table->unsignedBigInteger('idus'); 
-            $table->unsignedBigInteger('idua');
+            $table->unsignedBigInteger('idc');
             $table->unsignedBigInteger('idp');
+            $table->Integer('quantity_Carton');
+            $table->Integer('quantity_piece');
             $table->decimal('price');
-            $table->boolean('statu'); 
+            $table->boolean('regulation'); 
+            $table->boolean('status'); 
+            $table->string('Payment_type'); 
             $table->timestamps();
             
             $table->foreign('idp')->references('id')->on('products');
             $table->foreign('idus')->references('id')->on('users');
-            $table->foreign('idua')->references('id')->on('users');
-            $table->timestamps();
+            $table->foreign('idc')->references('id')->on('clients');
         });
     }
 
@@ -37,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_bon_transaction');
+        Schema::dropIfExists('bons_sales');
     }
 };

@@ -23,7 +23,6 @@ return new class extends Migration
             
             $table->foreign('idbt')->references('id')->on('bons_transaction');
             $table->foreign('idp')->references('id')->on('products');
-            $table->timestamps();
         });
     }
 

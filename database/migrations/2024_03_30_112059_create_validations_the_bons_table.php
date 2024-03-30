@@ -22,7 +22,6 @@ return new class extends Migration
             
             
             $table->foreign('id_ass')->references('id')->on('users');
-            $table->foreign('codeBonS')->references('code')->on('bons_sale')->index();
         });
         
     }

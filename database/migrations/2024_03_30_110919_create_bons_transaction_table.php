@@ -13,22 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bons_sale', function (Blueprint $table) {
+        Schema::create('bons_transaction', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('code');  
             $table->unsignedBigInteger('idus'); 
-            $table->unsignedBigInteger('idc');
+            $table->unsignedBigInteger('idua');
             $table->unsignedBigInteger('idp');
-            $table->Integer('quantity_Carton');
-            $table->Integer('quantity_piece');
             $table->decimal('price');
             $table->boolean('statu'); 
             $table->timestamps();
             
             $table->foreign('idp')->references('id')->on('products');
             $table->foreign('idus')->references('id')->on('users');
-            $table->foreign('idc')->references('id')->on('clients');
-            $table->timestamps();
+            $table->foreign('idua')->references('id')->on('users');
         });
     }
 
@@ -39,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_bon_sales');
+        Schema::dropIfExists('bons_transaction');
     }
 };
